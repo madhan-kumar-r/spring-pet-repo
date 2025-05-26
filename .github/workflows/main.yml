@@ -1,0 +1,21 @@
+name: Fetch Config JSON
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+
+      - name: Checkout config repo
+        uses: actions/checkout@v3
+        with:
+          repository: madhan-kumar-r/json-repo
+          ref: Dev
+          path: external-json
+
+      - name: View config file
+        run: cat external-json/config.json
